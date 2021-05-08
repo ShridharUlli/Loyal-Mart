@@ -1,6 +1,5 @@
 .tab-nav-container {
-    background-color: #fff;
-    
+    background-color: #fff;    
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     display: flex;
     justify-content: space-between;
@@ -56,7 +55,12 @@
     background-color: rgba(28, 150, 162, 0.2);
     color: rgba(28, 150, 162, 1);
 }
-
+.tab-icon.active{
+    stroke:#dc2626;
+}
+.tab-icon.inactive{
+    stroke:#10b981;
+}
 
 @media (max-width: 450px) {
     .tab-nav-container {
