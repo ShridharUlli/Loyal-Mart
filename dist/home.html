@@ -6,41 +6,37 @@
     <title>Landing Page</title>
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" href="assets/css/tailwind.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
   </head>
   <body>
     
     
     <!-- links -->
     <div class="w-11/12 m-auto mt-10">      
-      <h1 class="mb-2 text-4xl font-bold rubik">Links</h1>      
-      <a 
-      href="home.html" 
-      class="block text-2xl font-medium text-blue-700 hover:text-blue-500 rubik">
-      Home
-      </a>
-      <a 
-      href="categories.html" 
-      class="block text-2xl font-medium text-blue-700 hover:text-blue-500 rubik">
-      Categories
-      </a>
-      <a 
-      href="cart.html" 
-      class="block text-2xl font-medium text-blue-700 hover:text-blue-500 rubik">
-      Cart
-      </a>
-      <a 
-      href="profile.html" 
-      class="block text-2xl font-medium text-blue-700 hover:text-blue-500 rubik">
-      Profile
-      </a>
-      <a 
-      href="components.html" 
-      class="block text-2xl font-medium text-blue-700 hover:text-blue-500 rubik">
-      Components
-      </a>            
+          <!-- Swiper -->
+        <div class="swiper-container mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+            <div class="swiper-slide">Slide 4</div>
+            <div class="swiper-slide">Slide 5</div>
+            <div class="swiper-slide">Slide 6</div>
+            <div class="swiper-slide">Slide 7</div>
+            <div class="swiper-slide">Slide 8</div>
+            <div class="swiper-slide">Slide 9</div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      
     </div>
     <!-- links -->
 
+
+    <!-- bottom navbar     -->
     
     <div class="fixed bottom-0 z-50 w-full">
       <div class="tab-nav-container">
@@ -74,8 +70,14 @@
         </div>
     </div>
     </div>
+    
+    <!-- bottom navbar     -->
 
-  
+
+    <!-- scripts -->
     <script src="assets/js/main.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- scripts -->
   </body>
 </html>
