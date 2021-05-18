@@ -31,7 +31,7 @@ body {
   object-fit: cover; }
 
 .swiper-pagination-bullet {
-  background: white;
+  background: #000000;
   opacity: 0.5; }
 
 .swiper-pagination-bullet-active {
