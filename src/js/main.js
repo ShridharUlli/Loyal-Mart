@@ -6,7 +6,7 @@ var swiper = new Swiper(".mySwiper", {
 
   var swiper = new Swiper(".trending", {
     slidesPerView: 3,
-    spaceBetween: 30,
+    spaceBetween: 10,
     freeMode: true,
     pagination: {
       el: ".swiper-pagination",
