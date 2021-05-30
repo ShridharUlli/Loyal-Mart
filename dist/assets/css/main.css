@@ -45,11 +45,20 @@ body {
 .swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
   bottom: 0px !important; }
 
+.glassomorp {
+  background: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important; }
+
 .roboto {
   font-family: "Roboto", sans-serif; }
 
 .rubik {
   font-family: "Rubik", sans-serif; }
+
+.border-1 {
+  border-radius: 1px; }
 
 .tab-nav-container {
   background-color: #fff;
@@ -60,7 +69,6 @@ body {
   width: 450px; }
 
 .tab {
-  background-color: #ffffff;
   border-radius: 50px;
   cursor: pointer;
   display: flex;
