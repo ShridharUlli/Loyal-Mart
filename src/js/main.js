@@ -2,6 +2,10 @@ var swiper = new Swiper(".mySwiper", {
     pagination: {
       el: ".swiper-pagination",
     },
+    autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
   });
 
   var swiper = new Swiper(".trending", {
