@@ -570,43 +570,43 @@
                 </legend>
               
                 <div class="-space-y-px bg-white rounded-md" >
-                  <div class="relative flex p-4 border rounded-tl-md rounded-tr-md"  :class="{ 'bg-indigo-100 border-indigo-200 z-10' : value == 'open', 'border-gray-200' : value != 'open' }">
+                  <div class="relative flex p-4 border rounded-tl-md rounded-tr-md"  :class="{ 'bg-teal-100 border-teal-200 z-10' : value == 'open', 'border-gray-200' : value != 'open' }">
                     <div class="flex items-center h-5">
-                      <input id="settings-option-0" x-ref="radio" value="open" x-model="value" name="privacy_setting" type="radio" class="w-4 h-4 text-indigo-600 border-gray-300 cursor-pointer focus:ring-indigo-500" checked>
+                      <input id="settings-option-0" x-ref="radio" value="open" x-model="value" name="privacy_setting" type="radio" class="w-4 h-4 text-teal-600 border-gray-300 cursor-pointer focus:ring-teal-500" checked>
                     </div>
                     <label for="settings-option-0" class="flex flex-col ml-3 cursor-pointer">
-                      <span class="block text-sm font-medium" :class="{ 'text-indigo-900' : value == 'open', 'text-gray-800' : value !== 'open' }">
+                      <span class="block text-sm font-medium" :class="{ 'text-teal-900' : value == 'open', 'text-gray-800' : value !== 'open' }">
                         Public access
                       </span>
-                      <span class="block text-sm" :class="{ 'text-indigo-700' : value == 'open', 'text-gray-600' : value !== 'open' }">
+                      <span class="block text-sm" :class="{ 'text-teal-700' : value == 'open', 'text-gray-600' : value !== 'open' }">
                         This project would be available to anyone who has the link
                       </span>
                     </label>
                   </div>
               
-                  <div class="relative flex p-4 border border-gray-200" :class="{ 'bg-indigo-100 border-indigo-200 z-10' : value == 'closed', 'border-gray-200' : value != 'closed' }">
+                  <div class="relative flex p-4 border border-gray-200" :class="{ 'bg-teal-100 border-teal-200 z-10' : value == 'closed', 'border-gray-200' : value != 'closed' }">
                     <div class="flex items-center h-5">
-                      <input id="settings-option-1" name="privacy_setting" value="closed" x-model="value" type="radio" class="w-4 h-4 text-indigo-600 border-gray-300 cursor-pointer focus:ring-indigo-500">
+                      <input id="settings-option-1" name="privacy_setting" value="closed" x-model="value" type="radio" class="w-4 h-4 text-teal-600 border-gray-300 cursor-pointer focus:ring-teal-500">
                     </div>
                     <label for="settings-option-1" class="flex flex-col ml-3 cursor-pointer">
-                      <span class="block text-sm font-medium" :class="{ 'text-indigo-900' : value == 'closed', 'text-gray-800' : value !== 'closed' }">
+                      <span class="block text-sm font-medium" :class="{ 'text-teal-900' : value == 'closed', 'text-gray-800' : value !== 'closed' }">
                         Private to Project Members
                       </span>
-                      <span class="block text-sm" :class="{ 'text-indigo-700' : value == 'closed', 'text-gray-600' : value !== 'closed' }">
+                      <span class="block text-sm" :class="{ 'text-teal-700' : value == 'closed', 'text-gray-600' : value !== 'closed' }">
                         Only members of this project would be able to access
                       </span>
                     </label>
                   </div>
               
-                  <div class="relative flex p-4 border border-gray-200 rounded-bl-md rounded-br-md" :class="{ 'bg-indigo-100 border-indigo-200 z-10' : value == 'private', 'border-gray-200' : value != 'private' }">
+                  <div class="relative flex p-4 border border-gray-200 rounded-bl-md rounded-br-md" :class="{ 'bg-teal-100 border-teal-200 z-10' : value == 'private', 'border-gray-200' : value != 'private' }">
                     <div class="flex items-center h-5">
-                      <input id="settings-option-2" name="privacy_setting" type="radio" value="private" x-model="value" class="w-4 h-4 text-indigo-600 border-gray-300 cursor-pointer focus:ring-indigo-500">
+                      <input id="settings-option-2" name="privacy_setting" type="radio" value="private" x-model="value" class="w-4 h-4 text-teal-600 border-gray-300 cursor-pointer focus:ring-teal-500">
                     </div>
                     <label for="settings-option-2" class="flex flex-col ml-3 cursor-pointer">
-                      <span class="block text-sm font-medium" :class="{ 'text-indigo-900' : value == 'private', 'text-gray-800' : value !== 'private' }">
+                      <span class="block text-sm font-medium" :class="{ 'text-teal-900' : value == 'private', 'text-gray-800' : value !== 'private' }">
                         Private to you
                       </span>
-                      <span class="block text-sm" :class="{ 'text-indigo-700' : value == 'private', 'text-gray-600' : value !== 'private' }">
+                      <span class="block text-sm" :class="{ 'text-teal-700' : value == 'private', 'text-gray-600' : value !== 'private' }">
                         You are the only one able to access this project
                       </span>
                     </label>
