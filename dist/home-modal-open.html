@@ -10,6 +10,7 @@
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
   </head>
   <body>
 
@@ -530,38 +531,96 @@
                 </div>
               </a>              
             </div>
-
-
-            <div>
-              <div class="block">
-                <span class="text-gray-700">Radio Buttons</span>
-                <div class="mt-2">
+            
+            <div class="flex my-5">
+              <label class="w-6/12">
+                <input type="radio" name="number" class="">
+                <div class="flex flex-row items-center justify-around h-full p-2 mr-1 text-teal-600 border border-teal-600 rounded-md">
                   <div>
-                    <label class="inline-flex items-center">
-                      <input type="radio" class="w-4 h-4 form-radio" name="radio-sizes" value="1" checked>
-                      <span class="ml-2">Option 1</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div class="flex flex-col">                  
+                    <span class="text-sm rubik">+91-7453298634</span> 
+                  </div>
+                </div>
+              </label>
+              <label class="w-6/12">
+                <input type="radio" name="number" class="" checked="true">
+                <div class="flex flex-row items-center justify-around h-full p-2 ml-1 text-teal-600 border border-teal-600 rounded-md">
+                  <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div class="flex flex-col">                  
+                    <span class="text-sm rubik">+91-7453298634</span> 
+                  </div>
+                </div>
+              </label>
+              
+            </div>
+
+            <!-- last -->
+            <div class="flex justify-center pt-10 pb-5">
+              <fieldset x-init="init()" x-data="window.RadioFields()">
+                <legend class="sr-only">
+                  Privacy setting
+                </legend>
+              
+                <div class="-space-y-px bg-white rounded-md" >
+                  <div class="relative flex p-4 border rounded-tl-md rounded-tr-md"  :class="{ 'bg-indigo-100 border-indigo-200 z-10' : value == 'open', 'border-gray-200' : value != 'open' }">
+                    <div class="flex items-center h-5">
+                      <input id="settings-option-0" x-ref="radio" value="open" x-model="value" name="privacy_setting" type="radio" class="w-4 h-4 text-indigo-600 border-gray-300 cursor-pointer focus:ring-indigo-500" checked>
+                    </div>
+                    <label for="settings-option-0" class="flex flex-col ml-3 cursor-pointer">
+                      <span class="block text-sm font-medium" :class="{ 'text-indigo-900' : value == 'open', 'text-gray-800' : value !== 'open' }">
+                        Public access
+                      </span>
+                      <span class="block text-sm" :class="{ 'text-indigo-700' : value == 'open', 'text-gray-600' : value !== 'open' }">
+                        This project would be available to anyone who has the link
+                      </span>
                     </label>
                   </div>
-                  <div class="mt-1">
-                    <label class="inline-flex items-center">
-                      <input type="radio" class="w-6 h-6 form-radio" name="radio-sizes" value="2">
-                      <span class="ml-3 text-lg">Option 2</span>
+              
+                  <div class="relative flex p-4 border border-gray-200" :class="{ 'bg-indigo-100 border-indigo-200 z-10' : value == 'closed', 'border-gray-200' : value != 'closed' }">
+                    <div class="flex items-center h-5">
+                      <input id="settings-option-1" name="privacy_setting" value="closed" x-model="value" type="radio" class="w-4 h-4 text-indigo-600 border-gray-300 cursor-pointer focus:ring-indigo-500">
+                    </div>
+                    <label for="settings-option-1" class="flex flex-col ml-3 cursor-pointer">
+                      <span class="block text-sm font-medium" :class="{ 'text-indigo-900' : value == 'closed', 'text-gray-800' : value !== 'closed' }">
+                        Private to Project Members
+                      </span>
+                      <span class="block text-sm" :class="{ 'text-indigo-700' : value == 'closed', 'text-gray-600' : value !== 'closed' }">
+                        Only members of this project would be able to access
+                      </span>
                     </label>
                   </div>
-                  <div class="mt-1">
-                    <label class="inline-flex items-center">
-                      <input type="radio" class="w-8 h-8 form-radio" name="radio-sizes" value="3">
-                      <span class="ml-4 text-xl">Option 3</span>
+              
+                  <div class="relative flex p-4 border border-gray-200 rounded-bl-md rounded-br-md" :class="{ 'bg-indigo-100 border-indigo-200 z-10' : value == 'private', 'border-gray-200' : value != 'private' }">
+                    <div class="flex items-center h-5">
+                      <input id="settings-option-2" name="privacy_setting" type="radio" value="private" x-model="value" class="w-4 h-4 text-indigo-600 border-gray-300 cursor-pointer focus:ring-indigo-500">
+                    </div>
+                    <label for="settings-option-2" class="flex flex-col ml-3 cursor-pointer">
+                      <span class="block text-sm font-medium" :class="{ 'text-indigo-900' : value == 'private', 'text-gray-800' : value !== 'private' }">
+                        Private to you
+                      </span>
+                      <span class="block text-sm" :class="{ 'text-indigo-700' : value == 'private', 'text-gray-600' : value !== 'private' }">
+                        You are the only one able to access this project
+                      </span>
                     </label>
                   </div>
                 </div>
+              </fieldset>
               </div>
-            </div>
-
+              
+            <!-- last -->
+            
         </div>
       </div>
 
-
+ 
       <div class="tab-nav-container">
         <div class="tab">
           <a href="home.html">
