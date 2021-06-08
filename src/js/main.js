@@ -47,15 +47,6 @@ var swiper = new Swiper(".mySwiper", {
   });
 
 
-  function RadioFields() {
-    return {
-        value: false, 
-        init() {
-          this.value = this.$el.querySelector('input[type=radio]:checked').value
-        },      
-    }
-}
-window.RadioFields = RadioFields;
 
 //checkbox
 
