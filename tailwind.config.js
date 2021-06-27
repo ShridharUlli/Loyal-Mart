@@ -36,7 +36,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      padding: ['odd','even'],
+    },
   },
   plugins: [
     require('@tailwindcss/forms'),
