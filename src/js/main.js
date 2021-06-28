@@ -45,3 +45,28 @@ menuIcon.addEventListener("click",function(e){
       console.log("testing2");
     } 
 });
+
+
+//address list
+
+let addressList = function() {
+  return {
+    addresses: [
+      {id: 1, name: 'Home', address: '#01,Unnamed Road, Karnataka,Bangalore,565656'},
+      {id: 2, name: "Office", address: '#01,Unnamed Road, Karnataka,Bangalore,565656'},
+      {id: 3, name: 'Apartment', address: '#01,Unnamed Road, Karnataka,Bangalore,565656'}
+    ],
+    selectedAddresses: [1],
+
+    toggleAddresses(id) {
+      if (this.addressSelected(id)) {
+        this.selectedAddresses = this.selectedAddresses.filter(h => h !== id)
+      } else {
+        this.selectedAddresses.push(id)
+      }                                      
+    },
+    addressSelected(id) {
+      return this.selectedAddresses.indexOf(id) > -1;
+    }
+  }
+}
