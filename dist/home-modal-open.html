@@ -10,7 +10,7 @@
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js"></script>
   </head>
   <body>
 
@@ -22,17 +22,129 @@
         <a href="" class="flex flex-row items-center justify-around w-2/12 h-full p-2 m-1">          
             <img src="assets/img/location.svg" alt="">                    
         </a>
-        <a href="" class="flex flex-row items-center justify-around w-10/12 h-full p-2 m-1 text-white bg-red-600 rounded-md">
-          <div class="flex flex-col">
-            <span class="text-xs font-normal roboto">ADD ADDRESS AND MOBILE NUMBER</span> 
-            
+        <div>          
+          <div x-data="{open:true}">            
+            <div @click="open = true"  class="flex flex-row items-center justify-around w-10/12 h-full p-2 m-1 text-white bg-red-600 rounded-md">
+              <div class="flex flex-col">
+                <span class="text-xs font-normal roboto">ADD ADDRESS AND MOBILE NUMBER</span> 
+                
+              </div>
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </div>   
+            <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" x-show="open" :class="{ 'absolute inset-0 z-10 flex items-center justify-center': open }">
+              <div class="fixed z-50 w-full bg-white border-t bottom-16 h-5/6 rounded-t-2xl" x-show="open" @click.away="open = false" @keydown.escape.window="open = false">
+                <div class="w-2/12 h-1 mx-auto mt-5 bg-gray-200 rounded"></div>
+                <div class="w-11/12 max-h-full py-5 m-auto overflow-scroll">
+                  <h2 class="mb-2 font-bold text-center text-teal-600 text-md roboto">MANAGE ADDRESS</h2>
+                  <h3 class="mb-2 text-sm text-center text-red-600 roboto">PLEASE SELECT THE PREFFERED ADDRESS 
+                    AND CONTACT  NUMBER HERE</h3>
+                            
+                    <!-- Phone Numbers -->  
+                    <h2 class="text-lg font-semibold text-teal-600 rubik">PHONE NUMBER</h2>              
+                    <div class="flex flex-wrap"
+                      x-data="{isChecked: 1, phoneNumbers: [{id:1, phone: '+91-7451352652',},{id:2, phone: '+91-7451352653',},{id:3, phone: '+91-7451352654',}]}">
+                      <template x-for="contact in phoneNumbers">
+                        <div class="w-1/2 py-1 odd:pl-1 even:pr-1">
+                          <div class="flex flex-col py-2 bg-white border border-teal-600 rounded" :class="{ 'bg-teal-600' : isChecked === contact.id }" @click="isChecked = contact.id" >
+                              <div class="flex items-center">
+                                <input  type="radio" class="hidden" x-model="isChecked" :value="contact.id.toString()" :id="contact.phone">
+                              </div>
+                              <label for="phone" class="flex flex-col">
+                                <span class="flex flex-row items-center justify-center h-full space-x-2 text-sm font-medium" :class="{ 'text-white' : isChecked === contact.id, 'text-teal-600' : isChecked !== contact.id }">                        
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                </svg>                        
+                                <span class="text-sm rubik" x-text="contact.phone"></span>                            
+                              </span>                            
+                              </label>
+                          </div>
+                        </div>
+                      </template>
+                      </div>
+                      <!-- Phone Numbers -->
+                      
+                    
+                    <!-- Address -->                
+                    <div x-data="addressList()" class="mt-5">
+                      <h2 class="text-lg font-semibold text-teal-600 rubik">ADDRESS</h2>              
+                      <div class="">
+                        <template x-for="address in addresses">
+                          <div class="w-full py-1">
+                            <div class="flex py-1 bg-white border border-teal-600 rounded" :class="{ 'bg-teal-600' : selectedAddresses.includes(address.id)}" @click="toggleAddresses(address.id)">
+                                <div class="flex items-center h-5">
+                                  <input  type="radio" class="hidden">
+                                </div>
+                                <label class="flex flex-col">
+                                  <span class="flex flex-row items-center justify-center h-full text-teal-600" :class="{ 'text-white' : selectedAddresses.includes(address.id), 'text-teal-600' : !selectedAddresses.includes(address.id) }">                        
+                                    <div class="flex items-center justify-center w-2/12">
+                                      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                                      </svg>
+                                    </div>
+                                    <div class="flex flex-col w-10/12">
+                                      <span class="font-bold uppercase text-md rubik" x-text="address.name"></span>                            
+                                      <span class="text-sm truncate rubik" x-text="address.address"></span>                            
+                                    </div>                        
+                                </span>                            
+                                </label>
+                            </div>
+                          </div>
+                        </template>
+                        
+                      </div>
+                    </div>
+                    <!-- Address -->
+
+
+                    
+                    <div class="mt-6">
+                      <a href="">
+                        <div class="flex justify-between px-2 py-1 text-teal-600 bg-white border border-teal-600 rounded">                
+                            <div class="flex flex-col w-10/12">
+                              <span class="font-bold text-md rubik">MANAGE ADDRESSES</span>                            
+                              <span class="text-xs truncate rubik">YOUR CONTACT NUMBERS AND ADDRESSES</span>                            
+                            </div>                          
+                            <div class="flex items-center justify-center w-1/12">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                              </svg>
+                              </div>                                    
+                        </div>
+                      </a>
+                    </div>
+
+
+                    <div class="flex mt-6 space-x-1">              
+                        <div class="flex items-center justify-between w-1/2 p-2 text-white bg-red-600 rounded">                
+                            <div class="flex flex-col w-4/5">
+                              <span class="text-sm rubik">CANCEL</span>                                                  
+                            </div>                          
+                            <div class="flex items-center justify-center w-1/5">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                              </svg>
+                              </div>                                    
+                        </div>              
+                        <div class="flex items-center justify-between w-1/2 p-2 text-white bg-teal-600 rounded">                
+                            <div class="flex flex-col w-4/5">
+                              <span class="text-sm rubik">LEAVE</span>                                                  
+                            </div>                          
+                            <div class="flex items-center justify-center w-1/5">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                              </svg>
+                              </div>                                    
+                        </div>              
+                    </div>    
+                </div>
+              </div>            
+            </div>         
           </div>
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </div>
-        </a>
+        </div>
         <a id="menu" class="flex flex-row items-center justify-around w-2/12 h-full p-2 m-1 text-white border rounded-md shadow-md">
           <div class="block" id="hamburger">
             <svg xmlns="http://www.w3.org/2000/svg"  class="w-6 h-6" viewBox="0 0 24 24" stroke-width="3" stroke="#dc2626" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -467,172 +579,14 @@
         <div class="swiper-pagination"></div>
       </div>
     </div>
-    
-    
     <!-- trending -->
-  
-    <!-- padding -->
-    
-    <div class="w-8 h-20 bg-white">
 
-    </div>
-    <!-- padding -->
+    <!-- bottom spacing -->
+    <div class="h-16"></div>
+    <!-- bottom spacing -->
 
-
-    <!-- bottom navbar and modal     -->
-    
-    <div class="fixed bottom-0 z-50 w-full" id="">
-      <div class="w-screen h-screen bg-gray-900 bg-opacity-30">
-
-      </div>
-      <div class="w-full bg-white border-t rounded-t-3xl">
-        <div class="w-11/12 max-h-screen py-5 m-auto">
-          <div class="w-2/12 h-1 mx-auto mb-5 bg-gray-200 rounded"></div>
-          <h2 class="mb-2 text-sm font-semibold text-center text-teal-600 roboto animate__animated animate__bounce">MANAGE ADDRESS</h2>
-          <h3 class="mb-2 text-xs text-center text-red-600 roboto animate__animated animate__bounce">PLEASE SELECT THE PREFFERED ADDRESS 
-            AND CONTACT  NUMBER HERE</h3>            
-            
-            <h2 class="my-2 text-lg font-semibold text-teal-600 rubik animate__animated animate__bounce">CONTACT NUMBER</h2>
-            <div class="flex justify-between">
-              <a href="" class="flex flex-row items-center justify-around w-6/12 h-full p-2 mr-1 text-white bg-teal-600 border border-teal-600 rounded-md">
-                <div>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div class="flex flex-col">                  
-                  <span class="text-sm rubik">+91-7453298634</span> 
-                </div>
-              </a>
-              <a href="" class="flex flex-row items-center justify-around w-6/12 h-full p-2 ml-1 text-teal-600 border border-teal-600 rounded-md">
-                <div>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div class="flex flex-col">                  
-                  <span class="text-sm rubik">+91-7453298634</span> 
-                </div>
-              </a>
-            </div>
-
-            <h2 class="my-2 text-lg font-semibold text-teal-600 rubik animate__animated animate__bounce">ADDRESS</h2>
-            <div class="flex justify-between">
-              <a href="" class="flex flex-row items-center justify-around w-full h-full p-2 mr-1 text-white bg-teal-600 border border-teal-600 rounded-md">
-                <div class="flex items-center justify-center w-1/12">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <div class="flex flex-col w-10/12">                  
-                  <span class="font-bold rubik text-md">Home</span>
-                  <span class="text-xs truncate rubik">#1123, 3rd Street, Subramanyam Nagar, Bangalore, Karnataka, India.</span>
-                </div>
-              </a>              
-            </div>
-            
-            <div class="flex my-5">
-              <label class="w-6/12">
-                <input type="radio" name="number" class="">
-                <div class="flex flex-row items-center justify-around h-full p-2 mr-1 text-teal-600 border border-teal-600 rounded-md">
-                  <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <div class="flex flex-col">                  
-                    <span class="text-sm rubik">+91-7453298634</span> 
-                  </div>
-                </div>
-              </label>
-              <label class="w-6/12">
-                <input type="radio" name="number" class="" checked="true">
-                <div class="flex flex-row items-center justify-around h-full p-2 ml-1 text-teal-600 border border-teal-600 rounded-md">
-                  <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <div class="flex flex-col">                  
-                    <span class="text-sm rubik">+91-7453298634</span> 
-                  </div>
-                </div>
-              </label>
-              
-            </div>
-
-            <!-- last -->
-            <div class="flex justify-center pt-10 pb-5">
-              <fieldset x-init="init()" x-data="window.RadioFields()">
-                <legend class="sr-only">
-                  Privacy setting
-                </legend>
-              
-                <div class="-space-y-px bg-white rounded-md" >
-                  <div class="relative flex p-4 border rounded-tl-md rounded-tr-md"  :class="{ 'bg-teal-100 border-teal-200 z-10' : value == 'open', 'border-gray-200' : value != 'open' }">
-                    <div class="flex items-center h-5">
-                      <input id="settings-option-0" x-ref="radio" value="open" x-model="value" name="privacy_setting" type="radio" class="w-4 h-4 text-teal-600 border-gray-300 cursor-pointer focus:ring-teal-500" checked>
-                    </div>
-                    <label for="settings-option-0" class="flex flex-col ml-3 cursor-pointer">
-                      <span class="block text-sm font-medium" :class="{ 'text-teal-900' : value == 'open', 'text-gray-800' : value !== 'open' }">
-                        Public access
-                      </span>
-                      <span class="block text-sm" :class="{ 'text-teal-700' : value == 'open', 'text-gray-600' : value !== 'open' }">
-                        This project would be available to anyone who has the link
-                      </span>
-                    </label>
-                  </div>
-              
-                  <div class="relative flex p-4 border border-gray-200" :class="{ 'bg-teal-100 border-teal-200 z-10' : value == 'closed', 'border-gray-200' : value != 'closed' }">
-                    <div class="flex items-center h-5">
-                      <input id="settings-option-1" name="privacy_setting" value="closed" x-model="value" type="radio" class="w-4 h-4 text-teal-600 border-gray-300 cursor-pointer focus:ring-teal-500">
-                    </div>
-                    <label for="settings-option-1" class="flex flex-col ml-3 cursor-pointer">
-                      <span class="block text-sm font-medium" :class="{ 'text-teal-900' : value == 'closed', 'text-gray-800' : value !== 'closed' }">
-                        Private to Project Members
-                      </span>
-                      <span class="block text-sm" :class="{ 'text-teal-700' : value == 'closed', 'text-gray-600' : value !== 'closed' }">
-                        Only members of this project would be able to access
-                      </span>
-                    </label>
-                  </div>
-              
-                  <div class="relative flex p-4 border border-gray-200 rounded-bl-md rounded-br-md" :class="{ 'bg-teal-100 border-teal-200 z-10' : value == 'private', 'border-gray-200' : value != 'private' }">
-                    <div class="flex items-center h-5">
-                      <input id="settings-option-2" name="privacy_setting" type="radio" value="private" x-model="value" class="w-4 h-4 text-teal-600 border-gray-300 cursor-pointer focus:ring-teal-500">
-                    </div>
-                    <label for="settings-option-2" class="flex flex-col ml-3 cursor-pointer">
-                      <span class="block text-sm font-medium" :class="{ 'text-teal-900' : value == 'private', 'text-gray-800' : value !== 'private' }">
-                        Private to you
-                      </span>
-                      <span class="block text-sm" :class="{ 'text-teal-700' : value == 'private', 'text-gray-600' : value !== 'private' }">
-                        You are the only one able to access this project
-                      </span>
-                    </label>
-                  </div>
-                </div>
-              </fieldset>
-              </div>
-              <script>
-                  function RadioFields() {
-    return {
-        value: false, 
-        init() {
-          this.value = this.$el.querySelector('input[type=radio]:checked').value
-        },      
-    }
-}
-window.RadioFields = RadioFields;
-
-              </script>
-              
-            <!-- last -->
-            
-        </div>
-      </div>
-
- 
+    <!-- bottom navbar -->    
+    <div class="fixed bottom-0 z-50 w-full h-16" id="">       
       <div class="tab-nav-container">
         <div class="tab">
           <a href="home.html">
