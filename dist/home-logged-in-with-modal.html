@@ -243,32 +243,24 @@
     <!-- slider -->
 
     <!-- category -->
-    <div class="w-11/12 m-auto mt-5">
-      <h3 class="mb-1 roboto">
-        Shop by Category
-      </h3>
-      <div class="flex flex-row">
-        <div class="flex flex-col items-center m-1 text-center">
-          <img src="assets/img/category.jpg" alt="" class="mb-1 rounded-lg ring-2 ring-rose-500 ring-opacity-50">
-          <p class="text-xs">Special Category</p>         
-          
-        </div>
-        <div class="flex flex-col items-center m-1 text-center">
-          <img src="assets/img/category.jpg" alt="" class="mb-1 rounded-lg">
-          <p class="text-xs">Special Category</p>
-        </div>
-        <div class="flex flex-col items-center m-1 text-center">
-          <img src="assets/img/category.jpg" alt="" class="mb-1 rounded-lg">
-          <p class="text-xs">Special Category</p>
-        </div>
-        <div class="flex flex-col items-center m-1 text-center">
-          <img src="assets/img/category.jpg" alt="" class="mb-1 rounded-lg">
-          <p class="text-xs">Special Category</p>
-        </div>
+    <div class="w-11/12 m-auto mt-5" x-data="{ 
+      highlighted: 1, 
+      categories: [
+        {id: 1,name: 'Red',imgUrl:'assets/img/category.jpg'},
+        {id: 2,name: 'Green',imgUrl:'assets/img/category.jpg'},
+        {id: 3,name: 'Yellow',imgUrl:'assets/img/category.jpg'},
+        {id: 4,name: 'Orange',imgUrl:'assets/img/category.jpg'}
+      ]}">
+      <h3 class="mb-1 roboto">Shop by Category</h3>            
+      <div class="flex flex-row justify-between">
+        <template x-for="category in categories" :key="category.id">
+          <div class="flex flex-col items-center m-1 text-center">
+            <img :src="`${category.imgUrl}`" alt="" class="mb-1 rounded-md" :class="{'ring-2 ring-rose-500 ring-opacity-75': highlighted === category.id }">
+            <p class="text-xs"  x-text="category.name"></p>                     
+          </div>
+      </template>      
       </div>
-    </div>
-    
-    
+    </div>    
     <!-- category -->
 
 

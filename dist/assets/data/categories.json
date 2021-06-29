@@ -1,0 +1,25 @@
+{ 
+  "highlighted": 1, 
+  "categories": [
+    { 
+      "id": 1, 
+      "name": "Red", 
+      "imgUrl":"assets/img/category.jpg"
+    },
+    { 
+      "id": 2, 
+      "name": "Green", 
+      "imgUrl":"assets/img/category.jpg"
+    },
+    { 
+      "id": 3, 
+      "name": "Yellow", 
+      "imgUrl":"assets/img/category.jpg" 
+    },
+    { 
+      "id": 4, 
+      "name": "Orange", 
+      "imgUrl":"assets/img/category.jpg" 
+    }
+  ]
+}
